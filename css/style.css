@@ -127,5 +127,38 @@ ul {
   height: 35%;
   width: 100%;
   background: rgb(0,0,0);
-  background: linear-gradient(228deg, rgba(0,0,0,0.42482930672268904) 0%, rgba(30,30,30,1) 100%);;
+  background: linear-gradient(185deg, rgb(50, 50, 50) 0%, rgba(18, 18, 18, 1) 70%);
+  /* background: linear-gradient(228deg, rgba(0,0,0,0.42482930672268904) 0%, rgba(30,30,30,1) 100%);; */
+}
+
+.immagine img {
+  height: 85%; 
+  margin: 20px;
+}
+
+.title p {
+  font-size: small;
+}
+
+
+
+#b-play {
+  background-color: #1ED760 !important;
+  padding-inline: 25px;
+  margin-right: 10px;
+}
+
+#b-save {
+  padding-inline: 25px;
+}
+
+#dots {
+  margin-left: 10px;
+}
+
+#hidden {
+  background-color: #313131;
+  border-color: #313131;
+  font-size: x-small;
+  margin: 10px;
 }
