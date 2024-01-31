@@ -78,7 +78,6 @@
             </div>
           </div>
           <div class="container-center overflow-y-scroll">
-            
             <nav class="d-flex justify-content-between mt-2 align-items-center">
               <div class="d-flex gap-3">
                 <div
@@ -92,15 +91,18 @@
                   <i class="bi bi-chevron-right"></i>
                 </div>
               </div>
-              <div class="d-flex justify-content-between ">
+              <div class="d-flex justify-content-between">
                 <input
-                  class="form-control me-2"
+                  class="form-control me-2 rounded-pill border border-secondary"
                   type="search"
                   placeholder="Search"
                   aria-label="Search"
                 />
-                <button class="btn btn-outline-success" type="submit">
-                  Search
+                <button
+                  class="btn btn-outline border border-secondary rounded-circle"
+                  type="submit"
+                >
+                  <i class="bi bi-search text-white"></i>
                 </button>
               </div>
               <div class="d-flex bg-dark rounded-pill gap-1">
@@ -143,7 +145,11 @@
                 </div>
               </div>
               <div class="position-absolute top-0 end-0">
-                <button type="button" class="btn btn-secondary fw-bold rounded-pill text-secondary" id="hidden">
+                <button
+                  type="button"
+                  class="btn btn-secondary fw-bold rounded-pill text-secondary"
+                  id="hidden"
+                >
                   NASCONDI ANNUNCI
                 </button>
               </div>
@@ -170,26 +176,88 @@
             <!--Card-->
           </div>
 
-          <div class="container-right d-flex justify-content-between pt-1">
-            <span>Attività amici</span>
-            <div class="d-flex gap-2">
-              <i class="bi bi-person-add"></i>
-              <i class="bi bi-x-lg"></i>
+          <div class="container-right">
+            <div class="d-flex justify-content-between pt-1">
+              <span>Attività amici</span>
+              <div class="d-flex gap-2">
+                <i class="bi bi-person-add"></i>
+                <i class="bi bi-x-lg"></i>
+              </div>
+            </div>
+            <div class="utenti-dx d-flex justify-content-between mt-5">
+              <i class="bi bi-person-circle"></i>
+              <div id="first-user">
+              <h6 class="text-secondary p-0">Charlie Hookham</h6>
+              <p class="text-secondary p-0">In Camera・Yumi Zouma</p>
+             <p class="text-secondary p-0"><i class="bi bi-play-circle text-secondary"></i> EP III</p>
+            </div>
+            <p class="text-secondary p-0 m-0">4 ore</p>
+
+            </div>
+            <div class="utenti-dx d-flex justify-content-between mt-5">
+              <i class="bi bi-person-circle"></i>
+              <div id="first-user">
+              <h6 class="text-secondary p-0">Charlie Hookham</h6>
+              <p class="text-secondary p-0">In Camera・Yumi Zouma</p>
+             <p class="text-secondary p-0"><i class="bi bi-play-circle text-secondary"></i> EP III</p>
+            </div>
+            <p class="text-secondary p-0 m-0">4 ore</p>
+
+            </div>
+            <div class="utenti-dx d-flex justify-content-between mt-5">
+              <i class="bi bi-person-circle"></i>
+              <div id="first-user">
+              <h6 class="text-secondary p-0">Charlie Hookham</h6>
+              <p class="text-secondary p-0">In Camera・Yumi Zouma</p>
+             <p class="text-secondary p-0"><i class="bi bi-play-circle text-secondary"></i> EP III</p>
+            </div>
+            <p class="text-secondary p-0 m-0">4 ore</p>
+
             </div>
           </div>
         </div>
       </div>
+      <!--footer-->
       <footer class="footer d-flex justify-content-between">
-        <div class="left-footer"></div>
-        <div class="central-footer">
-          <input type="range" />
+        <div class="left-footer d-flex align-items-center">
+          <div class="d-flex align-items-center">
+            <img
+              class="footerimg"
+              src="./assets/come saprei- giorgia.jpeg"
+              alt="Giorgia_album"
+            />
+          </div>
+          <div class="align-content-center">
+            <h5 class="text-white m-0 p-0 px-3 fw-bold">Come Saprei</h5>
+            <p class="text-secondary m-0 p-0 px-3">Giorgia</p>
+          </div>
+          <div class="d-flex align-items-center">
+            <i class="bi bi-heart text-white"></i>
+          </div>
         </div>
-        <div class="right-footer"></div>
+        <div class="central-footer">
+          <div class="d-flex justify-content-center" id="iconMusic">
+            <i class="bi bi-shuffle text-success"></i>
+            <i class="bi bi-skip-backward-fill text-secondary"></i>
+            <i class="bi bi-play-circle-fill text-white"></i>
+            <i class="bi bi-skip-forward-fill text-secondary"></i>
+            <i class="bi bi-arrow-repeat text-success"></i>
+          </div>
+          <input id="range" type="range" />
+        </div>
+        <div
+          class="right-footer d-flex justify-content-between align-items-center"
+        >
+          <i class="bi bi-mic"></i>
+          <i class="bi bi-menu-button-wide"></i>
+          <i class="bi bi-person-lines-fill"></i>
+          <i class="bi bi-volume-up"></i>
+          <i class="bi bi-dash-lg w-100"></i>
+          <i class="bi bi-arrows-angle-expand"></i>
+        </div>
       </footer>
+      <!--footer-->
     </main>
-    <footer>
-      <!-- place footer here -->
-    </footer>
     <!-- Bootstrap JavaScript Libraries -->
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"

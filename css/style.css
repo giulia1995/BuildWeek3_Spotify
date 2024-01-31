@@ -162,3 +162,21 @@ ul {
   font-size: x-small;
   margin: 10px;
 }
+.footerimg{
+  height: 50px !important;
+}
+footer h5,p{
+  font-size: smaller !important;
+}
+#iconMusic{
+  font-size: xx-large !important;
+  gap: 30px !important;
+}
+#range{
+  width: 500px;
+  
+}
+.right-footer{
+  font-size: x-large;
+  gap: 10px !important;
+}
