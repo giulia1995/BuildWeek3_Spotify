@@ -8,7 +8,6 @@ body {
 
 .container-left {
   padding-inline: 1rem;
-  width: 25%;
   height: 90vh;
   background-color: black;
 }
@@ -28,7 +27,7 @@ body {
 
 .container-center {
   padding-inline: 1rem;
-  width: 60%;
+  
   height: 90vh;
   background: #212121;
   background: linear-gradient(180deg, rgb(50, 50, 50) 0%, rgba(18, 18, 18, 1) 58%);
@@ -50,7 +49,7 @@ body {
 
 .container-right {
   padding-inline: 1rem;
-  width: 15%;
+  
   height: 90vh;
   background-color: black;
 }
@@ -132,6 +131,7 @@ ul {
 .immagine img {
   height: 85%;
   margin: 20px;
+  
 }
 
 .title p {
@@ -170,7 +170,7 @@ p {
   gap: 30px !important;
 }
 #range {
-  width: 500px;
+  width: 450px;
 }
 .right-footer {
   font-size: x-large;
