@@ -1,6 +1,6 @@
 import { fetchGetWithQueryParam, fetchGetTrackList } from "./Fetch.js";
 import { createCard } from "./CardCreator.js";
-import { searchEvent } from "./Components.js";
+import { searchEvent, editJumbotron } from "./Components.js";
 //https://striveschool-api.herokuapp.com/api/deezer/serach?q={query}
 const musicArtists = [
   {
