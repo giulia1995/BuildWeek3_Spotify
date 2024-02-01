@@ -80,7 +80,8 @@ const addTrackList = (tracks) => {
   const track = tracks.data;
 
   track.forEach((getTrack) => {
+    let index = track.indexOf(getTrack);
     const getUl = document.getElementById("trackList");
-    getUl.innerHTML += `<li>${getTrack.title}</li>`;
+    getUl.innerHTML += `<li>${index + 1} - ${getTrack.title}</li>`;
   });
 };
