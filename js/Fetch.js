@@ -1,6 +1,6 @@
 let url = `https://striveschool-api.herokuapp.com/api/deezer/search?q=`;
 let urlSearch;
-export { fetchGetWithQueryParam, fetchGetTrackList };
+export { fetchGetWithQueryParam, fetchGetTrackList, fetchGetArtist };
 const fetchGetWithQueryParam = async (query) => {
   try {
     urlSearch = "";
@@ -21,6 +21,20 @@ const fetchGetWithQueryParam = async (query) => {
 const fetchGetTrackList = async (idAlbum) => {
   try {
     const response = await fetch(`https://striveschool-api.herokuapp.com/api/deezer/album/${idAlbum}`, {
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    });
+
+    return await response.json();
+  } catch (e) {
+    console.error("Si è verificato un errore: ", e);
+  }
+};
+
+const fetchGetArtist = async (idArtist) => {
+  try {
+    const response = await fetch(`https://striveschool-api.herokuapp.com/api/deezer/artist/${idArtist}`, {
       headers: {
         "Content-type": "application/json; charset=UTF-8",
       },

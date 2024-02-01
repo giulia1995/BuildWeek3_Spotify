@@ -1,4 +1,4 @@
-import { fetchGetWithQueryParam, fetchGetTrackList } from "./Fetch.js";
+import { fetchGetWithQueryParam, fetchGetTrackList, fetchGetArtist } from "./Fetch.js";
 import { createCard } from "./CardCreator.js";
 import { searchEvent, editJumbotron } from "./Components.js";
 //https://striveschool-api.herokuapp.com/api/deezer/serach?q={query}
@@ -58,7 +58,8 @@ const musicArtists = [
 document.addEventListener("DOMContentLoaded", async () => {
   const searchButton = document.getElementById("searchButton");
   const searchTextArea = document.getElementById("searchValue");
-
+  // const jumbotronData = await fetchGetArtist(13);
+  // console.log(jumbotronData);
   searchButton.addEventListener("click", searchEvent);
   searchTextArea.addEventListener("keyup", (ev) => {
     if (ev.key === "Enter") searchEvent();
