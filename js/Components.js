@@ -4,9 +4,10 @@ export { searchEvent, editJumbotron, casualElementsIndex };
 
 const query = document.getElementById("searchValue");
 let result;
-let artistName = localStorage.getItem("artistName");
+let artistName;
 const searchEvent = async (name) => {
   localStorage.setItem("artistName", name); //settato per l'utilizzo dentro editJumbotron per il richiamo
+  localStorage.setItem("querySearch", query.value); //settato per l'utilizzo dell'editJumbo con search
   document.getElementById("containerCards").innerHTML = "";
   const searchValue = query.value;
 
@@ -73,7 +74,8 @@ const editJumbotron = async (id, tipo) => {
   if (tipo === "album") {
     addTrackList(tracks);
   } else if (tipo === "artist") {
-    const temp = localStorage.getItem("artistName");
+    const temp = window.localStorage.getItem("artistName");
+    if (temp === null) temp = window.localStorage.getItem("querySearch");
     //uso la local storage memorizzata x simulare un query search value
     result = await fetchGetWithQueryParam(temp);
     const { data } = result;
@@ -81,6 +83,8 @@ const editJumbotron = async (id, tipo) => {
     const cards = data.forEach((element) => {
       createCard(element);
     });
+    // window.localStorage.removeItem("artistName");
+    // window.localStorage.removeItem("querySearch");
   }
 };
 
