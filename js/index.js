@@ -1,63 +1,49 @@
 import { fetchGetWithQueryParam, fetchGetTrackList, fetchGetArtist } from "./Fetch.js";
 import { createCard } from "./CardCreator.js";
-import { searchEvent, editJumbotron } from "./Components.js";
+import { searchEvent, editJumbotron, casualElementsIndex } from "./Components.js";
 //https://striveschool-api.herokuapp.com/api/deezer/serach?q={query}
 const musicArtists = [
   {
-    artist: "The Beatles",
-    title: "Abbey Road",
-    cover: "url_abbey_road.jpg",
+    id: 13,
+    name: "Eminem",
+    picture_medium: "https://e-cdns-images.dzcdn.net/images/artist/19cc38f9d69b352f718782e7a22f9c32/56x56-000000-80-0-0.jpg",
+    type: "index",
   },
   {
-    artist: "Michael Jackson",
-    title: "Thriller",
-    cover: "url_thriller.jpg",
+    id: 412,
+    name: "Queen",
+    picture_medium: "https://e-cdns-images.dzcdn.net/images/artist/1ab642216454f5e5e02c234f93af481c/250x250-000000-80-0-0.jpg",
+    type: "index",
   },
   {
-    artist: "Queen",
-    title: "A Night at the Opera",
-    cover: "url_a_night_at_the_opera.jpg",
+    id: 1309,
+    name: "Jay-Z",
+    picture_medium: "https://e-cdns-images.dzcdn.net/images/artist/90fab088c4d091618e7386f688803673/250x250-000000-80-0-0.jpg",
+    type: "index",
   },
   {
-    artist: "Bob Marley",
-    title: "Legend",
-    cover: "url_legend.jpg",
+    id: 2296,
+    name: "Giorgia",
+    picture_medium: "https://e-cdns-images.dzcdn.net/images/artist/9459140baa3a5ba7769522896ca0ccf9/250x250-000000-80-0-0.jpg",
+    type: "index",
   },
   {
-    artist: "Elvis Presley",
-    title: "Elvis Presley",
-    cover: "url_elvis_presley.jpg",
-  },
-  {
-    artist: "Madonna",
-    title: "Like a Virgin",
-    cover: "url_like_a_virgin.jpg",
-  },
-  {
-    artist: "Pink Floyd",
-    title: "The Dark Side of the Moon",
-    cover: "url_dark_side_of_the_moon.jpg",
-  },
-  {
-    artist: "David Bowie",
-    title: "The Rise and Fall of Ziggy Stardust and the Spiders from Mars",
-    cover: "url_ziggy_stardust.jpg",
-  },
-  {
-    artist: "Prince",
-    title: "Purple Rain",
-    cover: "url_purple_rain.jpg",
-  },
-  {
-    artist: "Led Zeppelin",
-    title: "IV",
-    cover: "url_led_zeppelin_iv.jpg",
+    id: 719,
+    name: "Bob Marley & The Wailers",
+    picture_medium: "https://e-cdns-images.dzcdn.net/images/artist/c8241e15efdefa9465c7b470643efb3b/250x250-000000-80-0-0.jpg",
+    type: "index",
   },
 ];
 
 document.addEventListener("DOMContentLoaded", async () => {
   const searchButton = document.getElementById("searchButton");
   const searchTextArea = document.getElementById("searchValue");
+  const isIndex = true;
+
+  const casual = casualElementsIndex(musicArtists);
+  localStorage.setItem("artistName", casual.name);
+  console.log(casual.id, localStorage);
+  editJumbotron(casual.id, casual.type);
   // const jumbotronData = await fetchGetArtist(13);
   // console.log(jumbotronData);
   searchButton.addEventListener("click", searchEvent);

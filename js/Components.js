@@ -1,6 +1,6 @@
 import { fetchGetWithQueryParam, fetchGetTrackList, fetchGetArtist } from "./Fetch.js";
 import { createCard } from "./CardCreator.js";
-export { searchEvent, editJumbotron };
+export { searchEvent, editJumbotron, casualElementsIndex };
 
 const query = document.getElementById("searchValue");
 let result;
@@ -8,7 +8,6 @@ const searchEvent = async () => {
   document.getElementById("containerCards").innerHTML = "";
   const searchValue = query.value;
 
-  localStorage.setItem("querySearch", searchValue);
   result = await fetchGetWithQueryParam(searchValue);
   const { data } = result;
 
@@ -19,6 +18,7 @@ const searchEvent = async () => {
 
 //console.log(jumbotronData);
 const editJumbotron = async (id, tipo) => {
+  let artistName;
   let jumbotronData;
   let cover_medium;
   let artist;
@@ -39,6 +39,8 @@ const editJumbotron = async (id, tipo) => {
     idArtist = jumbotronData.artist.id;
   } else {
     jumbotronData = await fetchGetArtist(id);
+    idArtist = id;
+    artistName = jumbotronData.name;
     picture_big = jumbotronData.picture_big;
     nb_album = jumbotronData.nb_album;
     nb_fan = jumbotronData.nb_fan;
@@ -68,14 +70,16 @@ const editJumbotron = async (id, tipo) => {
   jumbotronEdited.innerHTML = jumbotronContent;
   if (tipo === "album") {
     addTrackList(tracks);
-  } else {
-    const temp = localStorage.getItem("querySearch");
+  } else if (tipo === "artist") {
+    const temp = localStorage.getItem("artistName");
     result = await fetchGetWithQueryParam(temp);
     localStorage.removeItem("querySearch");
     const { data } = result;
     const cards = data.forEach((element) => {
       createCard(element);
     });
+  } else if (tipo === "index") {
+    console.log("è solo index");
   }
 };
 
@@ -87,4 +91,8 @@ const addTrackList = (tracks) => {
     const getUl = document.getElementById("trackList");
     getUl.innerHTML += `<li>${index + 1} - ${getTrack.title}</li>`;
   });
+};
+const casualElementsIndex = (list) => {
+  const index = Math.floor(Math.random() * list.length);
+  return list[index];
 };

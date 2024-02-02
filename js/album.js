@@ -3,7 +3,7 @@ import { editJumbotron } from "./Components.js";
 document.addEventListener("DOMContentLoaded", async () => {
   const params = new URLSearchParams(window.location.search);
   const url = window.location.href;
-  console.log(url);
+
   if (url.includes("album")) {
     const idAlbum = params.get("id");
     const tipo = "album";
