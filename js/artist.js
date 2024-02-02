@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (!window.localStorage.getItem("artistName")) {
     window.localStorage.setItem("artistName", artistName);
   }
+  console.log("hai la mamma puttana");
   const tipo = "artist";
   editJumbotron(idArtist, tipo);
 });
