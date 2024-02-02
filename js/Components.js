@@ -4,7 +4,8 @@ export { searchEvent, editJumbotron, casualElementsIndex };
 
 const query = document.getElementById("searchValue");
 let result;
-const searchEvent = async () => {
+const searchEvent = async (name) => {
+  localStorage.setItem("artistName", name); //settato per l'utilizzo dentro editJumbotron per il richiamo
   document.getElementById("containerCards").innerHTML = "";
   const searchValue = query.value;
 
@@ -39,7 +40,8 @@ const editJumbotron = async (id, tipo) => {
     idArtist = jumbotronData.artist.id;
   } else {
     jumbotronData = await fetchGetArtist(id);
-    idArtist = id;
+    idArtist = jumbotronData.id;
+    console.log(idArtist, id);
     artistName = jumbotronData.name;
     picture_big = jumbotronData.picture_big;
     nb_album = jumbotronData.nb_album;
@@ -51,7 +53,7 @@ const editJumbotron = async (id, tipo) => {
                             </div>
                             <div class="col title">
                             <p class="fw-bold mt-1">${tipo === "album" ? "Album" : "Artista"}</p>
-                            ${tipo === "artist" ? '<a href="./album.html?id=' + artist : '<a href="./artist.html?id=' + idArtist}" class="text-decoration-none"><h1 class="fw-bold">${tipo === "album" ? artist["name"] : jumbotronData["name"]}</h1></a>
+                            ${tipo === "artist" ? '<a href="#' : '<a href="./artist.html?id=' + idArtist}" class="text-decoration-none"><h1 class="fw-bold">${tipo === "album" ? artist["name"] : jumbotronData["name"]}</h1></a>
                             <h3 class="fw-bold">${tipo === "album" ? title : "Nr. Fan: " + nb_fan}</h3>
                             <p class="fw-bold">${tipo === "album" ? label : "Nr. Album: " + nb_album}</p>
                             <div class="buttons d-flex">
@@ -73,13 +75,14 @@ const editJumbotron = async (id, tipo) => {
   } else if (tipo === "artist") {
     const temp = localStorage.getItem("artistName");
     result = await fetchGetWithQueryParam(temp);
-    localStorage.removeItem("querySearch");
+
     const { data } = result;
+
     const cards = data.forEach((element) => {
       createCard(element);
     });
+    localStorage.removeItem("artistName");
   } else if (tipo === "index") {
-    console.log("è solo index");
   }
 };
 

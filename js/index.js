@@ -1,5 +1,5 @@
 import { fetchGetWithQueryParam, fetchGetTrackList, fetchGetArtist } from "./Fetch.js";
-import { createCard } from "./CardCreator.js";
+// import { createCard } from "./CardCreator.js";
 import { searchEvent, editJumbotron, casualElementsIndex } from "./Components.js";
 //https://striveschool-api.herokuapp.com/api/deezer/serach?q={query}
 const musicArtists = [
@@ -38,14 +38,11 @@ const musicArtists = [
 document.addEventListener("DOMContentLoaded", async () => {
   const searchButton = document.getElementById("searchButton");
   const searchTextArea = document.getElementById("searchValue");
-  const isIndex = true;
+  const casual = casualElementsIndex(musicArtists); //mi prendo l'oggetto casuale da mostrae all'apertura della pagina
+  localStorage.setItem("artistName", casual.name); //settato nel caso in cui clicco sull'artista che compare nel jumbotron, lo riutilizzerò in editJumbotron(), dove lo svuoterò anche
 
-  const casual = casualElementsIndex(musicArtists);
-  localStorage.setItem("artistName", casual.name);
-  console.log(casual.id, localStorage);
   editJumbotron(casual.id, casual.type);
-  // const jumbotronData = await fetchGetArtist(13);
-  // console.log(jumbotronData);
+
   searchButton.addEventListener("click", searchEvent);
   searchTextArea.addEventListener("keyup", (ev) => {
     if (ev.key === "Enter") searchEvent();
