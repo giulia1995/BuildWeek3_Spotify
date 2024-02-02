@@ -4,6 +4,7 @@ export { searchEvent, editJumbotron, casualElementsIndex };
 
 const query = document.getElementById("searchValue");
 let result;
+let artistName = localStorage.getItem("artistName");
 const searchEvent = async (name) => {
   localStorage.setItem("artistName", name); //settato per l'utilizzo dentro editJumbotron per il richiamo
   document.getElementById("containerCards").innerHTML = "";
@@ -17,7 +18,7 @@ const searchEvent = async (name) => {
   });
 };
 
-//console.log(jumbotronData);
+//funzione unica per generare jumbotrono a seconda della pagina; piu sotto ci sono delle valutazioni se il tipo jumbotrono sara x albumo o per artista
 const editJumbotron = async (id, tipo) => {
   let artistName;
   let jumbotronData;
@@ -41,7 +42,6 @@ const editJumbotron = async (id, tipo) => {
   } else {
     jumbotronData = await fetchGetArtist(id);
     idArtist = jumbotronData.id;
-    console.log(idArtist, id);
     artistName = jumbotronData.name;
     picture_big = jumbotronData.picture_big;
     nb_album = jumbotronData.nb_album;
@@ -53,7 +53,7 @@ const editJumbotron = async (id, tipo) => {
                             </div>
                             <div class="col title">
                             <p class="fw-bold mt-1">${tipo === "album" ? "Album" : "Artista"}</p>
-                            ${tipo === "artist" ? '<a href="#' : '<a href="./artist.html?id=' + idArtist}" class="text-decoration-none"><h1 class="fw-bold">${tipo === "album" ? artist["name"] : jumbotronData["name"]}</h1></a>
+                            ${tipo === "artist" ? '<a href="#' : '<a href="./artist.html?id=' + idArtist + "&artist=" + artistName}" class="text-decoration-none"><h1 class="fw-bold">${tipo === "album" ? artist["name"] : jumbotronData["name"]}</h1></a>
                             <h3 class="fw-bold">${tipo === "album" ? title : "Nr. Fan: " + nb_fan}</h3>
                             <p class="fw-bold">${tipo === "album" ? label : "Nr. Album: " + nb_album}</p>
                             <div class="buttons d-flex">
@@ -74,18 +74,17 @@ const editJumbotron = async (id, tipo) => {
     addTrackList(tracks);
   } else if (tipo === "artist") {
     const temp = localStorage.getItem("artistName");
+    //uso la local storage memorizzata x simulare un query search value
     result = await fetchGetWithQueryParam(temp);
-
     const { data } = result;
 
     const cards = data.forEach((element) => {
       createCard(element);
     });
-    localStorage.removeItem("artistName");
-  } else if (tipo === "index") {
   }
 };
 
+//function x la tracklist
 const addTrackList = (tracks) => {
   const track = tracks.data;
 
@@ -95,6 +94,8 @@ const addTrackList = (tracks) => {
     getUl.innerHTML += `<li>${index + 1} - ${getTrack.title}</li>`;
   });
 };
+
+//mi pesco oggetto casuale dall'array che gli passo da index x creazione jmbotron causale iniziale
 const casualElementsIndex = (list) => {
   const index = Math.floor(Math.random() * list.length);
   return list[index];

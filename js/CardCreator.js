@@ -16,6 +16,3 @@ const createCard = (result) => {
 
   containerCards.innerHTML += cardTemplate;
 };
-
-//<div class="col">
-//<a href="./album.html" target="_blank" class="text-decoration-none"></a>
