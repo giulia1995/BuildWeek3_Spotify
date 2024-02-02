@@ -53,8 +53,11 @@ const editJumbotron = async (id, tipo) => {
                             <h3 class="fw-bold">${tipo === "album" ? title : "Nr. Fan: " + nb_fan}</h3>
                             <p class="fw-bold">${tipo === "album" ? label : "Nr. Album: " + nb_album}</p>
                             <div class="buttons d-flex">
-                            <button type="button" class="col-lg-2 col-md-2 col-sm-3 btn rounded-pill text-dark fw-bold" id="b-play">Play</button>
-                            <button type="button" class="d-none d-lg-block btn rounded-pill text-white fw-bold bg-dark border" id="b-save">Salva</button>
+                             ${
+                               tipo === "album"
+                                 ? '<button type="button" class="col-lg-2 col-md-2 col-sm-3 btn rounded-pill text-dark fw-bold" id="b-play">Play</button>' + '<button type="button" class="d-none d-lg-block btn rounded-pill text-white fw-bold bg-dark border" id="b-save">Salva</button>'
+                                 : '<button type="button" class="d-none d-lg-block btn rounded-pill text-white fw-bold bg-dark border" id="b-save">Segui</button>'
+                             }
                             <i class="d-none d-lg-block bi bi-three-dots text-secondary fw-bold" id="dots"></i>
                             </div>
                             </div>
