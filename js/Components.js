@@ -54,7 +54,7 @@ const editJumbotron = async (id, tipo) => {
                             </div>
                             <div class="col title">
                             <p class="fw-bold mt-1">${tipo === "album" ? "Album" : "Artista"}</p>
-                            ${tipo === "artist" ? '<a href="#' : '<a href="./artist.html?id=' + idArtist + "&artist=" + artistName}" class="text-decoration-none"><h1 class="fw-bold">${tipo === "album" ? artist["name"] : jumbotronData["name"]}</h1></a>
+                            ${tipo === "artist" ? '<a href="#' : '<a href="./artist.html?id=' + idArtist + "&artist=" + artistName}" class="text-decoration-none text-light"><h1 class="fw-bold">${tipo === "album" ? artist["name"] : jumbotronData["name"]}</h1></a>
                             <h3 class="fw-bold">${tipo === "album" ? title : "Nr. Fan: " + nb_fan}</h3>
                             <p class="fw-bold">${tipo === "album" ? label : "Nr. Album: " + nb_album}</p>
                             <div class="buttons d-flex">
@@ -83,8 +83,8 @@ const editJumbotron = async (id, tipo) => {
     const cards = data.forEach((element) => {
       createCard(element);
     });
-    // window.localStorage.removeItem("artistName");
-    // window.localStorage.removeItem("querySearch");
+    window.localStorage.removeItem("artistName");
+    window.localStorage.removeItem("querySearch");
   }
 };
 
